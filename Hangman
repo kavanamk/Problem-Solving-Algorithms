@@ -1,0 +1,45 @@
+import random
+
+random_words=['backup','bandwidth','binary','cybercrime','exabyte','joystick','logicgate','resolution','syntax']
+#print(random.choice(random_words))
+hangman_word=random.choice(random_words)
+hangman_word_list=list()
+for e in hangman_word:
+    hangman_word_list.append(e)
+guess_in_progress=list('-'*len(hangman_word))
+letters_guessed=list()
+tries=0
+#print(hangman_word)
+
+while (tries<=7):
+
+    print('guess a letter')
+    letter = input()
+    if letter in letters_guessed:
+        print('you have used that letter already')
+        print(guess_in_progress)
+
+    else:
+        letters_guessed.append(letter)
+        if letter in hangman_word:
+            positions = [pos for pos, char in enumerate(hangman_word) if char == letter]
+            for i in positions:
+                guess_in_progress[int(i)] = str(letter)
+            print(guess_in_progress)
+        else:
+            tries += 1
+            print('wrong!')
+            print(guess_in_progress)
+    if (hangman_word_list == guess_in_progress):
+        print('CONGRATS!!')
+        exit()
+
+if(hangman_word_list==guess_in_progress):
+    pass
+else:
+    print('Better luck next time')
+
+
+
+
+
