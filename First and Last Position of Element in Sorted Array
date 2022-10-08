@@ -1,0 +1,21 @@
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(logn) runtime complexity
+
+
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        sp=max(prices[1:])
+        sp_index=prices.index(sp)
+        cp=min(prices[:sp_index])
+        if sp>cp:
+            return sp-cp
+        else:
+            return 0
+        
